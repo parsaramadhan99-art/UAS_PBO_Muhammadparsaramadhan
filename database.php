@@ -1,13 +1,11 @@
 <?php
-// koneksi_database.php
+// koneksi.php
 
 class Database {
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    // DISAMAKAN PERSIS dengan instruksi nomor 1 di gambar
-    private $database = "DB_SIMULASI_PBO_TI1C_MuhammadParsaRamadhan"; 
-    
+    private $database = "DB_LATIHAN_PBO_TRPL1A_MuhammadParsaRamadhan"; 
     public $conn;
 
     public function __construct() {
@@ -16,6 +14,16 @@ class Database {
         if ($this->conn->connect_error) {
             die("Koneksi database gagal: " . $this->conn->connect_error);
         }
+    }
+
+    // ===================================================================
+    // METODE QUERY SPESIFIK (Ditambahkan untuk memenuhi kriteria Tahap 4)
+    // ===================================================================
+    public function ambilDataKaryawanBerdasarkanStatus($status) {
+        // Menggunakan query SELECT * WHERE untuk memfilter kolom status_karyawan/jenis
+        $query = "SELECT * FROM tabel_karyawan WHERE status_karyawan = '$status'";
+        $result = $this->conn->query($query);
+        return $result;
     }
 }
 ?>
