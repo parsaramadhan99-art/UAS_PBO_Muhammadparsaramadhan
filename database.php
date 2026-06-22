@@ -6,7 +6,7 @@ class Database {
     private $username = "root";
     private $password = "";
     // Menyesuaikan dengan nama database UAS Anda di Laragon/phpMyAdmin
-    private $database = "db_uas_pbo"; 
+    private $database = "db_uas_pbo_ti1c_muhammadparsaramadhan"; 
     public $conn;
 
     public function __construct() {
