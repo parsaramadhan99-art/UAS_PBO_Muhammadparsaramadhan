@@ -1,11 +1,12 @@
 <?php
-// koneksi.php
+// database.php
 
 class Database {
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $database = "DB_LATIHAN_PBO_TRPL1A_MuhammadParsaRamadhan"; 
+    // Menyesuaikan dengan nama database UAS Anda di Laragon/phpMyAdmin
+    private $database = "db_uas_pbo"; 
     public $conn;
 
     public function __construct() {
@@ -16,11 +17,9 @@ class Database {
         }
     }
 
-    // ===================================================================
-    // METODE QUERY SPESIFIK (Ditambahkan untuk memenuhi kriteria Tahap 4)
-    // ===================================================================
+    // METODE QUERY SPESIFIK (Tahap 4)
     public function ambilDataKaryawanBerdasarkanStatus($status) {
-        // Menggunakan query SELECT * WHERE untuk memfilter kolom status_karyawan/jenis
+        // Memfilter data berdasarkan kolom status_karyawan
         $query = "SELECT * FROM tabel_karyawan WHERE status_karyawan = '$status'";
         $result = $this->conn->query($query);
         return $result;

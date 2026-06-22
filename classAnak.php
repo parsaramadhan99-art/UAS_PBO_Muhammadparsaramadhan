@@ -1,12 +1,9 @@
 <?php
 // classAnak.php
 
-// Hubungkan terlebih dahulu dengan file abstract class induknya
 require_once 'Karyawan.php';
 
-// ==========================================
-// 1. SUBCLASS KARYAWAN KONTRAK
-// ==========================================
+// SUBCLASS KARYAWAN KONTRAK (Tahap 4 & 5)
 class KaryawanKontrak extends Karyawan {
     protected $durasi_kontrak_bulanan;
     protected $agensi_penyalur;
@@ -17,19 +14,17 @@ class KaryawanKontrak extends Karyawan {
         $this->agensi_penyalur = $agensi;
     }
 
-    // OVERRIDING: Gaji Bersih Karyawan Kontrak
+    // Overriding Perhitungan Gaji Kontrak
     public function hitung_gaji_bersih() {
         return $this->hari_kerja_masuk * $this->gaji_dasar_perhari;
     }
 
     public function tampilkan_profil_karyawan() {
-        return "ID: $this->id_karyawan | Nama: $this->nama_karyawan | Dept: $this->departemen | Status: Kontrak (Agensi: $this->agensi_penyalur)";
+        return "ID: $this->id_karyawan | Nama: $this->nama_karyawan";
     }
 }
 
-// ==========================================
-// 2. SUBCLASS KARYAWAN TETAP
-// ==========================================
+// SUBCLASS KARYAWAN TETAP (Tahap 4 & 5)
 class KaryawanTetap extends Karyawan {
     protected $tunjangan_kesehatan;
     protected $opsi_saham_td;
@@ -40,19 +35,17 @@ class KaryawanTetap extends Karyawan {
         $this->opsi_saham_td = $opsiSaham;
     }
 
-    // OVERRIDING: Gaji Bersih Karyawan Tetap + Tunjangan Kesehatan
+    // Overriding Perhitungan Gaji Tetap + Tunjangan
     public function hitung_gaji_bersih() {
         return ($this->hari_kerja_masuk * $this->gaji_dasar_perhari) + $this->tunjangan_kesehatan;
     }
 
     public function tampilkan_profil_karyawan() {
-        return "ID: $this->id_karyawan | Nama: $this->nama_karyawan | Dept: $this->departemen | Status: Tetap (Saham: $this->opsi_saham_td)";
+        return "ID: $this->id_karyawan | Nama: $this->nama_karyawan";
     }
 }
 
-// ==========================================
-// 3. SUBCLASS KARYAWAN MAGANG
-// ==========================================
+// SUBCLASS KARYAWAN MAGANG (Tahap 4 & 5)
 class KaryawanMagang extends Karyawan {
     protected $uang_saku_bulanan;
     protected $sertifikat_kampus_merdeka;
@@ -63,13 +56,13 @@ class KaryawanMagang extends Karyawan {
         $this->sertifikat_kampus_merdeka = $sertifikat;
     }
 
-    // OVERRIDING: Gaji Bersih Karyawan Magang (Potongan upah 20% / sisa 80%)
+    // Overriding Perhitungan Gaji Magang (Potongan 20% / Sisa 80%)
     public function hitung_gaji_bersih() {
         return ($this->hari_kerja_masuk * $this->gaji_dasar_perhari) * 0.80;
     }
 
     public function tampilkan_profil_karyawan() {
-        return "ID: $this->id_karyawan | Nama: $this->nama_karyawan | Dept: $this->departemen | Status: Magang (Program: $this->sertifikat_kampus_merdeka)";
+        return "ID: $this->id_karyawan | Nama: $this->nama_karyawan";
     }
 }
 ?>
